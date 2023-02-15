@@ -15,5 +15,10 @@ namespace M1S3_SistemaBanco
         
         //public List<Transacao> Extrato { get; set; }
 
+
+        public string ResumoCliente(){
+           return  $"{NumeroConta} |  {Nome}  | {CPF}";
+        }
+
     }
 }

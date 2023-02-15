@@ -1,6 +1,37 @@
 ﻿
 using M1S3_SistemaBanco;
 
+List<Cliente> clientes = new List<Cliente>();
+string opcao;
+do{
+  Console.WriteLine("Bem vindos ao Banco FULL STACK BANCK, escolha uma opção");
+  Console.WriteLine("1 - Criar Conta ");
+  Console.WriteLine("2 - Adicionar Transacao");
+  Console.WriteLine("3 - Consultar Extrato");
+  Console.WriteLine("4 - Sair");
+  Console.WriteLine("5 - Exibir Clientes");
+  opcao = Console.ReadLine();
+
+  if(opcao == "1"){
+    Cliente novoCliente =  CriarConta();
+    clientes.Add(novoCliente);
+  }
+  if (opcao == "5"){
+    ExibirClientes();
+  }
+
+  Console.WriteLine("Tecle Enter para continuar");
+  Console.ReadLine();
+} while(opcao != "4");
+
+
+void ExibirClientes(){
+   Console.WriteLine("Número da conta        | Nome         | CPF    ");
+  for(int i =0; i < clientes.Count; i++){
+    Console.WriteLine(clientes[i].ResumoCliente());
+  }
+}
+
 Cliente CriarConta(){
     Cliente cliente = new Cliente();
     Console.WriteLine("Nome do cliente:");
@@ -19,19 +50,3 @@ Cliente CriarConta(){
     cliente.NumeroConta = int.Parse(Console.ReadLine());
     return cliente;
 }
-
-
-string opcao;
-do{
-  Console.WriteLine("Bem vindos ao Banco FULL STACK BANCK, escolha uma opação");
-  Console.WriteLine("1 - Criar Conta ");
-  Console.WriteLine("2 - Adicionar Transacao");
-  Console.WriteLine("3 - Consultar Extrato");
-  Console.WriteLine("4 - Sair");
-  opcao = Console.ReadLine();
-
-  if(opcao == "1"){
-    Cliente novoCliente =  CriarConta();
-  }
-} while(opcao != "3");
-
