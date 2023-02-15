@@ -12,6 +12,8 @@ namespace M1S3_SistemaBanco
         public DateTime DataNascimento { get; set; }
         public int NumeroConta { get; set; }
         public double Saldo { get; set; }
+
+        public int Idade { get {return (int)(Math.Floor((DateTime.Now - DataNascimento).TotalDays / 365.25)); } set {} }
         
         //public List<Transacao> Extrato { get; set; }
 
@@ -20,5 +22,8 @@ namespace M1S3_SistemaBanco
            return  $"{NumeroConta} |  {Nome}  | {CPF}";
         }
 
+        public bool EhMaior(){
+            return Idade >= 18;
+        }
     }
 }
