@@ -1,4 +1,5 @@
 ﻿
+using System.Globalization;
 using M1S3_SistemaBanco;
 
 List<Cliente> clientes = new List<Cliente>();
@@ -78,7 +79,7 @@ void ExibirExtrato(){
   }
   double saldo = 0;
   foreach(Transacao transacao  in contaCliente.Extrato){
-    Console.WriteLine(" Data: " + transacao.Data + " Valor: R$ " + transacao.Valor );
+    Console.WriteLine(" Data: " + transacao.Data + " Valor: " + transacao.Valor.ToString("C2", new CultureInfo("pt-BR")) );
     saldo += transacao.Valor;
     //Console.WriteLine($"Data: {transacao.Data} Valor: R$  {transacao.Valor}" );
   }
