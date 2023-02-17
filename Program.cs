@@ -36,6 +36,9 @@ do{
   else if (opcao == "2"){
     AdicionarTransacao();
   }
+  else if (opcao == "3"){
+    ExibirExtrato();
+  }
 
   Console.WriteLine("Tecle Enter para continuar");
   Console.ReadLine();
@@ -63,8 +66,31 @@ void AdicionarTransacao(){
 
 }
 
+void ExibirExtrato(){
+  Console.WriteLine("Qual a conta?");
+  int numeroConta = int.Parse(Console.ReadLine());
+
+  Cliente contaCliente = BuscarClientePorNumeroDeConta(numeroConta);
+
+  if (contaCliente == null){
+    Console.WriteLine("Conta não cadastrada, favor cadastrar antes");
+    return;
+  }
+  double saldo = 0;
+  foreach(Transacao transacao  in contaCliente.Extrato){
+    Console.WriteLine(" Data: " + transacao.Data + " Valor: R$ " + transacao.Valor );
+    saldo += transacao.Valor;
+    //Console.WriteLine($"Data: {transacao.Data} Valor: R$  {transacao.Valor}" );
+  }
+
+  Console.WriteLine("Saldo = " + contaCliente.Saldo);
+
+}
+
+
+
 Cliente BuscarClientePorNumeroDeConta (int numeroConta){; 
-  foreach(var cliente in clientes){
+  foreach(Cliente cliente in clientes){
     if(cliente.NumeroConta == numeroConta){
       return cliente;
     }
