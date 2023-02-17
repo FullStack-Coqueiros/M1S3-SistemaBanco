@@ -15,7 +15,24 @@ namespace M1S3_SistemaBanco
 
         public int Idade { get {return (int)(Math.Floor((DateTime.Now - DataNascimento).TotalDays / 365.25)); } set {} }
         
-        //public List<Transacao> Extrato { get; set; }
+        public List<Transacao> Extrato { get; set; }
+
+        public Cliente()
+        {
+            Extrato = new List<Transacao>();
+        }
+        public Cliente(string nome, string cpf, string email, string telefone, 
+                       string end, DateTime dtNascimento,int numeroConta ) :this()
+        {
+            Nome = nome;
+            CPF = cpf;
+            Email=email;
+            Telefone =telefone; 
+            Endereco = end;
+            DataNascimento = dtNascimento;
+            NumeroConta = numeroConta;
+            
+        }
 
 
         public string ResumoCliente(){
