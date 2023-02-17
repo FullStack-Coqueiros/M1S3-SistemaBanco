@@ -1,4 +1,3 @@
-using System;
 
 namespace M1S3_SistemaBanco
 {
