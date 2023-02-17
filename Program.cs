@@ -48,18 +48,8 @@ void AdicionarTransacao(){
   Console.WriteLine("Qual a conta?");
   int numeroConta = int.Parse(Console.ReadLine());
 
-  Cliente contaCliente = null;
-  foreach(var cliente in clientes){
-    if(cliente.NumeroConta == numeroConta){
-      contaCliente = cliente;
-      break ;
-    }
-  }
-  // mesma coisa que o foreach
-  // for(int i =0; i < clientes.Count; i++){
-  //    if(clientes[i].NumeroConta == numeroConta);
-  //     contaCliente = clientes[i];
-  // }
+  Cliente contaCliente = BuscarClientePorNumeroDeConta(numeroConta);
+
   if (contaCliente == null){
     Console.WriteLine("Conta não cadastrada, favor cadastrar antes");
     return;
@@ -67,12 +57,24 @@ void AdicionarTransacao(){
 
   Console.WriteLine("Qual o valor da transação?" );
   double valor = double.Parse(Console.ReadLine());
-  Transacao transacao = new Transacao();
-  transacao.Data = DateTime.Now;
-  transacao.Valor = valor;
+  Transacao transacao = new Transacao(DateTime.Now, valor);
 
   contaCliente.Extrato.Add(transacao);
 
+}
+
+Cliente BuscarClientePorNumeroDeConta (int numeroConta){; 
+  foreach(var cliente in clientes){
+    if(cliente.NumeroConta == numeroConta){
+      return cliente;
+    }
+  }
+  // mesma coisa que o foreach
+  // for(int i =0; i < clientes.Count; i++){
+  //    if(clientes[i].NumeroConta == numeroConta);
+  //     return clientes[i];
+  // }
+  return null;
 }
 
 void ExibirClientes(){
